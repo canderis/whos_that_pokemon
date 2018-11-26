@@ -1,0 +1,30 @@
+:host{
+    display: block;
+    width: 1024px;
+    height: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    background-image: url('/assets/Pokedex.png');
+    background-repeat: no-repeat;
+}
+
+display{
+    height: 210px;
+    width: 320px;
+    position: relative;
+        left: 88px;
+        top: 229px;
+}
+
+.choices{
+    position: relative;
+    top: 350px;
+    width: 320px;
+    left: 88px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+button:first-letter {
+    text-transform: uppercase;
+}
