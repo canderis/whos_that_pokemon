@@ -12,39 +12,42 @@ export class AppComponent implements OnInit {
   title = 'whosthatpokemon';
 
   options = [];
-  correct = "";
+  correct = '';
   reveal = false;
 
-  constructor(private controlService: ControlService){
+  totalCorrect = 0;
+  totalMissed = 0;
 
-  }
+  constructor(private controlService: ControlService) {}
 
    shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-    chose(choice){
-        console.log(choice);
-        if(choice === this.correct){
-            console.log("Correct!");
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
         }
-        this.reveal = true;
-
+        return a;
     }
-    nextPokemon(){
+
+    chose(choice) {
+        if (choice === this.correct) {
+            this.totalCorrect++;
+        } else {
+            this.totalMissed++;
+        }
+        this.options = [];
+        this.reveal = true;
+    }
+
+    nextPokemon() {
         this.controlService.nextPokemon();
     }
 
-  ngOnInit(): void {
-      this.controlService.getSubject().subscribe(data => {
-          this.reveal = false;
-          this.options = data.data.map( pokemon => pokemon.name);
-          this.correct = this.options[0];
-          this.options = this.shuffle(this.options);
-
-      });
-   }
+    ngOnInit(): void {
+        this.controlService.getSubject().subscribe(data => {
+            this.reveal = false;
+            this.options = data.data.map( pokemon => pokemon.species.name);
+            this.correct = this.options[0];
+            this.options = this.shuffle(this.options);
+        });
+    }
 }

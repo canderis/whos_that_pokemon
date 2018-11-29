@@ -1,8 +1,30 @@
+<div class="left">
+    <display [revealed]="reveal"></display>
 
-<display [revealed]="reveal"></display>
-
-<div class="choices">
-    <button (click)="chose(option)" *ngFor="let option of options">{{option}}</button>
+    <div class="choices">
+        <button class="choice" (click)="chose(option)" *ngFor="let option of options">{{option}}</button>        
+    </div>
+    <div *ngIf="options.length == 0" class="res">
+        <button class="next" (click)="nextPokemon()">Next Pokemon</button>
+    </div>
+    
 </div>
+<div class="right">
+    <div class="title">
 
-<button (click)="nextPokemon()">Next Pokemon</button>
+    </div>
+    <div class="toggles">
+
+    </div>
+    <div class="scores">
+        <div class="score-wrap score-wrap-left">
+            <p class="text">Total Correct:</p>
+            <p class="score">{{totalCorrect}}</p>
+        </div>
+        
+        <div class="score-wrap score-wrap-right">
+            <p class="text">Total Missed:</p>
+            <p class="score">{{totalMissed}}</p>
+        </div>
+    </div>
+</div>
