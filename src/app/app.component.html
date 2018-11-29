@@ -16,13 +16,13 @@
         <div class="info">
             <p>By Scott Huffman</p>
             <div class="version">
-                <p class="v">v0.6</p>
+                <p class="v">v0.7</p>
                 <p>2018</p>
             </div>
         </div>
     </div>
     <div class="toggles">
-
+        <button (click)="toggle(i)" *ngFor="let gen of settings.gens; let i = index">Gen {{i + 1}}</button>
     </div>
     <div class="scores">
         <div class="score-wrap score-wrap-left">

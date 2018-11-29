@@ -28,12 +28,26 @@ app-display{
     grid-template-areas: "sp2" "title" "toggles" "scores";
 }
 
+.toggles{
+    grid-area: toggles;
+    padding: 50px 76px 40px 104px;
+    grid-column-gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+    grid-template-rows: 50px 50px;
+}
+
 .title{
     grid-area: title;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     margin: auto;
-    grid-column-gap: 20px;
+    grid-column-gap: 40px;
+}
+
+.title img{
+    margin-left: 20px;
 }
 .version{
     display: grid;
@@ -41,7 +55,7 @@ app-display{
 }
 
 .info{
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .v{
@@ -126,4 +140,8 @@ p.score{
     display: grid;
     grid-template-columns: 98px 154px 20px 154px auto;
     grid-template-areas: "sp3 left-score sp5 right-score sp4";
+}
+
+.toggles button{
+    font-size: 20px;
 }

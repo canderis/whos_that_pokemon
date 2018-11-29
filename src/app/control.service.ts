@@ -9,23 +9,13 @@ import { Subject } from 'rxjs';
 export class ControlService  {
 
     private settings = {
-        gens: {
-            1: false,
-            2: false,
-            3: false,
-            4: false,
-            5: false,
-            6: true,
-            7: true,
-        },
+        gens: [true, false, false, false, false, true, true, ],
         revealed: false
     };
 
     private subject = new Subject<any>();
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   nextPokemon() {
       const promises = [];
@@ -34,14 +24,14 @@ export class ControlService  {
           let choice = 0;
 
           do {
-              gen = Math.floor((Math.random() * 7) + 1);
+              gen = Math.floor((Math.random() * 7));
           }while (!this.settings.gens[gen]);
 
           const range = function (min, max) {
               return Math.floor(Math.random() * (max - min + 1)) + min;
           };
 
-          switch (gen) {
+          switch (gen + 1) {
               case 1:
                 choice = range(1, 151);
                 break;
@@ -73,6 +63,10 @@ export class ControlService  {
           this.subject.next({data: data, settings: this.settings});
       });
 
+  }
+
+  getSettings() {
+      return this.settings;
   }
 
   getSubject() {

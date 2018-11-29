@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
 
   totalCorrect = 0;
   totalMissed = 0;
+  settings = {
+    gens: [true, false, false, false, false, true, true, ],
+    revealed: false
+};
 
   constructor(private controlService: ControlService) {}
 
@@ -42,6 +46,10 @@ export class AppComponent implements OnInit {
         this.controlService.nextPokemon();
     }
 
+    toggle(i) {
+        this.settings.gens[i] = !this.settings.gens[i];
+    }
+
     ngOnInit(): void {
         this.controlService.getSubject().subscribe(data => {
             this.reveal = false;
@@ -49,5 +57,7 @@ export class AppComponent implements OnInit {
             this.correct = this.options[0];
             this.options = this.shuffle(this.options);
         });
+
+        this.settings = this.controlService.getSettings();
     }
 }

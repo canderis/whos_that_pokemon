@@ -35,9 +35,9 @@ export class DisplayComponent implements OnInit {
         });
     }
     pad(n, width, z = null) {
-    z = z || '0';
-    n = n + '';
-    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+        z = z || '0';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     }
 
 }
