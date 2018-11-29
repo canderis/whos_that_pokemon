@@ -3,7 +3,7 @@ import { ControlService } from '../control.service';
 
 
 @Component({
-  selector: 'display',
+  selector: 'app-display',
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.css']
 })
@@ -11,6 +11,7 @@ export class DisplayComponent implements OnInit {
     url = '';
     @Input() revealed = false;
     revealedOverride = false;
+
     get display() {
         return this.revealedOverride || this.revealed;
     }
@@ -28,7 +29,7 @@ export class DisplayComponent implements OnInit {
         this.controlService.getSubject().subscribe(data => {
             this.url = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${this.pad(data.data[0].id, 3)}.png`;
             this.revealed = false;
-            if (data.settings.revealed){
+            if (data.settings.revealed) {
                 this.revealedOverride = true;
             }
         });

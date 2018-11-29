@@ -1,17 +1,25 @@
 <div class="left">
-    <display [revealed]="reveal"></display>
+    <app-display [revealed]="reveal"></app-display>
 
     <div class="choices">
         <button class="choice" (click)="chose(option)" *ngFor="let option of options">{{option}}</button>        
     </div>
     <div *ngIf="options.length == 0" class="res">
-        <button class="next" (click)="nextPokemon()">Next Pokemon</button>
+        <button class="next" *ngIf="totalCorrect > 0 || totalMissed > 0" (click)="nextPokemon()">Next Pokemon</button>
+        <button class="next" *ngIf="totalCorrect == 0 && totalMissed == 0" (click)="nextPokemon()">Start the Game</button>
     </div>
     
 </div>
 <div class="right">
     <div class="title">
-
+        <img src="assets/logo.png">
+        <div class="info">
+            <p>By Scott Huffman</p>
+            <div class="version">
+                <p class="v">v0.6</p>
+                <p>2018</p>
+            </div>
+        </div>
     </div>
     <div class="toggles">
 
