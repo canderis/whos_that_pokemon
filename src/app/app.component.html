@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="toggles">
-        <button (click)="toggle(i)" *ngFor="let gen of settings.gens; let i = index">Gen {{i + 1}}</button>
+        <button (click)="toggle(i)" *ngFor="let gen of settings.gens; let i = index" [class.active]="active[i]" >Gen {{i + 1}}</button>
     </div>
     <div class="scores">
         <div class="score-wrap score-wrap-left">

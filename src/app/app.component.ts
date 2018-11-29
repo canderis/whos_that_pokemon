@@ -9,22 +9,24 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'whosthatpokemon';
+    title = 'whosthatpokemon';
 
-  options = [];
-  correct = '';
-  reveal = false;
+    options = [];
+    correct = '';
+    reveal = false;
 
-  totalCorrect = 0;
-  totalMissed = 0;
-  settings = {
-    gens: [true, false, false, false, false, true, true, ],
-    revealed: false
-};
+    totalCorrect = 0;
+    totalMissed = 0;
+    settings = {
+        gens: [true, false, false, false, false, true, true, ],
+        revealed: false
+    };
 
-  constructor(private controlService: ControlService) {}
+    active = [true, false, false, false, false, true, true];
 
-   shuffle(a) {
+    constructor(private controlService: ControlService) {}
+
+    shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [a[i], a[j]] = [a[j], a[i]];
@@ -48,6 +50,7 @@ export class AppComponent implements OnInit {
 
     toggle(i) {
         this.settings.gens[i] = !this.settings.gens[i];
+        this.active[i] = !this.active[i];
     }
 
     ngOnInit(): void {

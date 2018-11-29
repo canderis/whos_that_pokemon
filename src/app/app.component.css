@@ -145,3 +145,8 @@ p.score{
 .toggles button{
     font-size: 20px;
 }
+
+button.active{
+    box-shadow: none;
+
+}
