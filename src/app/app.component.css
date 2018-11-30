@@ -82,6 +82,8 @@ button:first-letter {
 
 .res{
     grid-area: choices;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 button{
@@ -90,6 +92,8 @@ button{
     box-shadow: -2px 2px 0 -1px #2D7397, -2px 2px 0 1px #222121;
     color: #222121;
     /* padding: 10px; */
+    transition: .2s;
+    transform: translateX(0px) translateY(0px);
     font-family: Exo-Medium;
     font-size: 25px;
     color: #222121;
@@ -104,6 +108,10 @@ button.choice{
 button.next{
     margin: auto;
     display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 20px;
+
 }
 
 p{
@@ -146,7 +154,17 @@ p.score{
     font-size: 20px;
 }
 
-button.active{
+button.active, button:active{
     box-shadow: none;
+    transform: translateX(-3px) translateY(3px);
+}
 
+button:focus{
+    outline: none;
+}
+
+p.result{
+    margin: auto;
+    width: fit-content;
+    font-size: 30px;
 }

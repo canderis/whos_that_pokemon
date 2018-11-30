@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
     correct = '';
     reveal = false;
 
+    lastCorrect = null;
+
     totalCorrect = 0;
     totalMissed = 0;
     settings = {
@@ -37,14 +39,17 @@ export class AppComponent implements OnInit {
     chose(choice) {
         if (choice === this.correct) {
             this.totalCorrect++;
+            this.lastCorrect = true;
         } else {
             this.totalMissed++;
+            this.lastCorrect = false;
         }
         this.options = [];
         this.reveal = true;
     }
 
     nextPokemon() {
+        this.lastCorrect = null;
         this.controlService.nextPokemon();
     }
 

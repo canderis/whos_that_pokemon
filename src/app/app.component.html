@@ -5,6 +5,8 @@
         <button class="choice" (click)="chose(option)" *ngFor="let option of options">{{option}}</button>        
     </div>
     <div *ngIf="options.length == 0" class="res">
+        <p class="result" *ngIf="lastCorrect==true">Correct!</p>
+        <p class="result" *ngIf="lastCorrect==false">Incorrect!</p>
         <button class="next" *ngIf="totalCorrect > 0 || totalMissed > 0" (click)="nextPokemon()">Next Pokemon</button>
         <button class="next" *ngIf="totalCorrect == 0 && totalMissed == 0" (click)="nextPokemon()">Start the Game</button>
     </div>
@@ -16,7 +18,7 @@
         <div class="info">
             <p>By Scott Huffman</p>
             <div class="version">
-                <p class="v">v0.7</p>
+                <p title="Mobile and tablet support coming soon" class="v">v0.8</p>
                 <p>2018</p>
             </div>
         </div>
